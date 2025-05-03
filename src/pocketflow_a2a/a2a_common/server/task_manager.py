@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import Union, AsyncIterable, List
-from src.a2a_common.types import Task
-from src.a2a_common.types import (
+from pocketflow_a2a.a2a_common.types import Task
+from pocketflow_a2a.a2a_common.types import (
     JSONRPCResponse,
     TaskIdParams,
     TaskQueryParams,
@@ -30,7 +30,7 @@ from src.a2a_common.types import (
     TaskPushNotificationConfig,
     InternalError,
 )
-from src.a2a_common.server.utils import new_not_implemented_error
+from pocketflow_a2a.a2a_common.server.utils import new_not_implemented_error
 import asyncio
 import logging
 

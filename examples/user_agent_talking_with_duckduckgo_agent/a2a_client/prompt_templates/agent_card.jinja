@@ -2,6 +2,6 @@ Name: {{ name }}
 Description: {{ description }}
 Skills: {% for skill in skills%}
     - name: {{skill.name}}
-    - description: {{skill.description}}
-    - example: {{skill.examples}}
+        - description: {{skill.description}}
+        - example: {{skill.examples}}
 {% endfor %}
