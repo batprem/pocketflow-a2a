@@ -1,7 +1,7 @@
 import httpx
 from httpx_sse import connect_sse
 from typing import Any, AsyncIterable
-from common.types import (
+from pocketflow_a2a.a2a_common.types import (
     AgentCard,
     GetTaskRequest,
     SendTaskRequest,
@@ -20,6 +20,7 @@ from common.types import (
     SendTaskStreamingResponse,
 )
 import json
+import pydantic
 
 
 class A2AClient:
@@ -64,6 +65,22 @@ class A2AClient:
                 raise A2AClientHTTPError(e.response.status_code, str(e)) from e
             except json.JSONDecodeError as e:
                 raise A2AClientJSONError(str(e)) from e
+
+    async def get_agent_card(
+        self, agent_card_endpoint: str = ".well-known/agent.json"
+    ) -> AgentCard:
+        async with httpx.AsyncClient() as client:
+            try:
+                # Image generation could take time, adding timeout
+                response = await client.get(
+                    f"{self.url}/{agent_card_endpoint}", timeout=30
+                )
+                response.raise_for_status()
+                return AgentCard(**response.json())
+            except httpx.HTTPStatusError as e:
+                return A2AClientHTTPError(e.response.status_code, str(e))
+            except (json.JSONDecodeError, pydantic.ValidationError) as e:
+                return A2AClientJSONError(str(e))
 
     async def get_task(self, payload: dict[str, Any]) -> GetTaskResponse:
         request = GetTaskRequest(params=payload)

@@ -1,4 +1,4 @@
-from common.types import (
+from pocketflow_a2a.a2a_common.types import (
     JSONRPCResponse,
     ContentTypeNotSupportedError,
     UnsupportedOperationError,
