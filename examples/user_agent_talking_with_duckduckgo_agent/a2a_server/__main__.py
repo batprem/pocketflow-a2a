@@ -1,17 +1,14 @@
-import click
 import logging
+
+import click
 
 # Import from the common code you copied
 from pocketflow_a2a.a2a_common.server import A2AServer
-from pocketflow_a2a.a2a_common.types import (
-    AgentCard,
-    AgentCapabilities,
-    AgentSkill,
-    MissingAPIKeyError,
-)
+from pocketflow_a2a.a2a_common.types import (AgentCapabilities, AgentCard,
+                                             AgentSkill, MissingAPIKeyError)
 
 # Import your custom TaskManager (which now imports from your original files)
-from pocketflow_a2a.task_manager import PocketFlowTaskManager
+from .task_manager import PocketFlowTaskManager
 
 # --- Configure logging ---
 # Set level to INFO to see server start, requests, responses

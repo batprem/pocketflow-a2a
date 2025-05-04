@@ -2,28 +2,21 @@
 import logging
 from typing import AsyncIterable, Union
 
+import pocketflow_a2a.a2a_common.server.utils as server_utils
 # Import from the common code you copied
-from src.a2a_common.server.task_manager import InMemoryTaskManager
-from src.a2a_common.types import (
-    JSONRPCResponse,
-    SendTaskRequest,
-    SendTaskResponse,
-    SendTaskStreamingRequest,
-    SendTaskStreamingResponse,
-    TaskSendParams,
-    TaskState,
-    TaskStatus,
-    TextPart,
-    Artifact,
-    UnsupportedOperationError,
-    InternalError,
-    InvalidParamsError,
-    Message,
-)
-import src.a2a_common.server.utils as server_utils
+from pocketflow_a2a.a2a_common.server.task_manager import InMemoryTaskManager
+from pocketflow_a2a.a2a_common.types import (Artifact, InternalError,
+                                             InvalidParamsError,
+                                             JSONRPCResponse, Message,
+                                             SendTaskRequest, SendTaskResponse,
+                                             SendTaskStreamingRequest,
+                                             SendTaskStreamingResponse,
+                                             TaskSendParams, TaskState,
+                                             TaskStatus, TextPart,
+                                             UnsupportedOperationError)
 
 # Import directly from your original PocketFlow files
-from flow import create_agent_flow
+from .flow import create_agent_flow
 
 logger = logging.getLogger(__name__)
 

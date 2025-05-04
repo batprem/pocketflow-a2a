@@ -1,16 +1,15 @@
 import asyncio
-import asyncclick as click  # Using asyncclick for async main
-from uuid import uuid4
-import anyio
 import functools
 import logging
+from uuid import uuid4
+
+import anyio
+import asyncclick as click  # Using asyncclick for async main
 
 # Import from the common directory placed alongside this script
 from src.a2a_common.client import A2AClient
-from src.a2a_common.types import (
-    A2AClientError,
-    TextPart,  # Used to construct the message
-)
+from src.a2a_common.types import TextPart  # Used to construct the message
+from src.a2a_common.types import A2AClientError
 
 # --- Configure logging ---
 # Set level to INFO to see client requests and responses
